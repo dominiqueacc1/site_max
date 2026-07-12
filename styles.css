@@ -156,6 +156,8 @@ a {
   width: 100%;
   background: var(--white);
   border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
 /* ---------- Centered content ---------- */
@@ -221,12 +223,65 @@ a {
     --pad-y: 1.5rem;
   }
 
+  /* Navigation becomes a black dropdown panel below the header */
   .nav {
-    display: none;
+    position: absolute;
+    top: 100%; /* directly under the header, whatever its height */
+    left: 0;
+    right: 0;
+    transform: translateY(-8px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+    padding: 2.25rem var(--pad-x) 2.75rem;
+    background: #000;
+    /* Closed by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+
+  /* Small caret pointing up toward the Menu button */
+  .nav::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 66px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #000;
+  }
+
+  .nav__link {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+
+  /* Open state */
+  .menu-open .nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .menu-toggle {
     display: inline-flex;
+  }
+
+  /* Hamburger morphs into an X when open */
+  .menu-open .menu-toggle__icon span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-open .menu-toggle__icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-open .menu-toggle__icon span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .logo img {

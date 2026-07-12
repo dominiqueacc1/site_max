@@ -55,12 +55,35 @@
     LARGE_SCREEN.addListener(sync); // older Safari
   }
 
-  /* Mobile menu button — placeholder toggle until the menu pages exist. */
+  /* Mobile menu: toggle the black dropdown panel. */
   var menuToggle = document.querySelector(".menu-toggle");
+  var nav = document.querySelector(".nav");
+
+  function setMenu(open) {
+    document.body.classList.toggle("menu-open", open);
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+  }
+
   if (menuToggle) {
     menuToggle.addEventListener("click", function () {
-      var open = menuToggle.getAttribute("aria-expanded") === "true";
-      menuToggle.setAttribute("aria-expanded", String(!open));
+      setMenu(!document.body.classList.contains("menu-open"));
+    });
+  }
+
+  // Close the menu after tapping a link.
+  if (nav) {
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest(".nav__link")) setMenu(false);
+    });
+  }
+
+  // Reset the menu when returning to large screens.
+  if (typeof LARGE_SCREEN.addEventListener === "function") {
+    LARGE_SCREEN.addEventListener("change", function (mq) {
+      if (mq.matches) setMenu(false);
     });
   }
 })();
