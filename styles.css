@@ -1,0 +1,254 @@
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #ffffff;
+  --muted: rgba(255, 255, 255, 0.7);
+  --pad-x: 2.5rem;
+  --pad-y: 1.75rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Oswald", "Arial Narrow", sans-serif;
+  color: var(--white);
+  background: #111;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden; /* homepage fits the viewport, no scrolling */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Hero (full viewport) ---------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* fits mobile browser chrome when supported */
+  overflow: hidden;
+}
+
+/* Background layer — image on small screens (video injected on large screens) */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background: url("assets/image.png") center center / cover no-repeat;
+  z-index: 0;
+}
+
+/* The injected <video> fills the same layer */
+.hero__bg video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Subtle darkening so text stays legible */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.15) 35%,
+    rgba(0, 0, 0, 0.15) 65%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+}
+
+/* ---------- Header ---------- */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+  display: block;
+  /* Recolor the black/gray logo to solid white so it stays visible
+     on the dark hero background (the PNG has a transparent background). */
+  filter: brightness(0) invert(1);
+}
+
+/* Desktop navigation — centered horizontally */
+.nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav__link {
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  opacity: 0.92;
+  transition: opacity 0.2s ease;
+}
+
+.nav__link:hover,
+.nav__link--active {
+  opacity: 1;
+}
+
+/* Mobile menu button — hidden on large screens */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.85rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.menu-toggle__label {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.menu-toggle__icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+}
+
+.menu-toggle__icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ---------- Centered content ---------- */
+.hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.hero__title {
+  font-weight: 600;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.hero__subtitle {
+  margin-top: 1.1rem;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 2rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-weight: 400;
+}
+
+.hero__cta-text {
+  border-bottom: 1px solid var(--white);
+  padding-bottom: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.hero__cta:hover .hero__cta-text {
+  opacity: 0.8;
+}
+
+/* Small ring shown before "our clips" on mobile only */
+.hero__cta-dot {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+}
+
+/* ---------- Responsive: small screens ---------- */
+@media (max-width: 768px) {
+  :root {
+    --pad-x: 1.5rem;
+    --pad-y: 1.5rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .logo img {
+    height: 64px;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  .hero__subtitle {
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .hero__cta {
+    margin-top: 1.75rem;
+  }
+
+  .hero__cta-dot {
+    display: inline-block;
+  }
+}
