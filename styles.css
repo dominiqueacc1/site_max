@@ -390,7 +390,9 @@ body.page-projects .hero__content {
 .projects-grid {
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* min(100%, 300px) lets a column shrink below 300px on narrow screens
+     instead of overflowing the viewport. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 2.5rem 2rem;
   text-align: left;
 }
@@ -540,5 +542,30 @@ body.page-projects .hero__content {
 
   .hero__cta-dot {
     display: inline-block;
+  }
+
+  /* Inner pages: tighter padding and single-column layout on phones. */
+  body.page-projects .hero__content,
+  body.page-contact .hero__content {
+    padding: 6.5rem 1.25rem 3rem;
+  }
+
+  .projects-grid {
+    margin-top: 2rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .projects__title,
+  .contact__title {
+    font-size: 2rem;
+  }
+
+  .project__title {
+    font-size: 1.3rem;
+  }
+
+  .contact-form {
+    margin-top: 2rem;
   }
 }
