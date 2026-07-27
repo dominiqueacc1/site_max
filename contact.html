@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WayPost | Contact Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-contact">
+  <section class="hero">
+    <!-- Static background image (no video on the contact page). -->
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+
+    <!-- Top bar -->
+    <header class="header">
+      <a href="index.html" class="logo" aria-label="WayPost — Home">
+        <img src="assets/logo.png" alt="WayPost" />
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="projects.html" class="nav__link">Projects</a>
+        <a href="contact.html" class="nav__link nav__link--active">Contact Us</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </header>
+
+    <!-- Centered content -->
+    <div class="hero__content">
+      <div class="contact">
+        <h1 class="contact__title">CONTACT US</h1>
+        <p class="contact__intro">
+          Tell us about your project and we'll get back to you.
+        </p>
+
+        <form class="contact-form" id="contact-form">
+          <!-- ============================================================
+               PASTE YOUR WEB3FORMS ACCESS KEY BELOW (between the quotes).
+               Get a free key in ~30s at https://web3forms.com — enter the
+               email address where you want inquiries delivered, and they
+               email you the key. No account or password required.
+               ============================================================ -->
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New project inquiry from WayPost site" />
+          <input type="hidden" name="from_name" value="WayPost Website" />
+          <!-- Honeypot spam trap (hidden from real users) -->
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+
+          <label class="field">
+            <span class="field__label">Your project</span>
+            <textarea
+              name="message"
+              class="field__input field__input--area"
+              rows="6"
+              required
+              placeholder="Describe your project — type, scope, timeline, references…"
+            ></textarea>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Your email</span>
+            <input
+              type="email"
+              name="email"
+              class="field__input"
+              required
+              placeholder="you@example.com"
+            />
+          </label>
+
+          <button type="submit" class="contact-form__submit">
+            <span class="contact-form__submit-text">Send</span>
+          </button>
+
+          <p class="contact-form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

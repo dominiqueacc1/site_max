@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WayPost | Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-projects">
+  <section class="hero">
+    <!-- Static background image (no video on the projects page). -->
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+
+    <!-- Top bar -->
+    <header class="header">
+      <a href="index.html" class="logo" aria-label="WayPost — Home">
+        <img src="assets/logo.png" alt="WayPost" />
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="projects.html" class="nav__link nav__link--active">Projects</a>
+        <a href="contact.html" class="nav__link">Contact Us</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </header>
+
+    <!-- Page content -->
+    <div class="hero__content">
+      <div class="projects">
+        <h1 class="projects__title">PROJECTS</h1>
+        <p class="projects__intro">A selection of work realised by the agency.</p>
+
+        <div class="projects-grid">
+          <!-- Thumbnails use each video's YouTube image, with an automatic
+               fallback to the standard-res version if the HD one is missing. -->
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/0pQ5vPCmVWQ" target="_blank" rel="noopener" aria-label="Watch “The Country House” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/0pQ5vPCmVWQ/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/0pQ5vPCmVWQ/hqdefault.jpg';"
+                alt="The Country House" loading="lazy" />
+            </a>
+            <h2 class="project__title">The Country House</h2>
+            <p class="project__synopsis">
+              A Ukrainian family flees the city to take refuge in their country house.
+              Miroslav, a 17-year-old, is tasked with looking after his younger sister
+              Krystyna, who is deaf. As bombs fall nearby and resources run low, Miroslav
+              tries to convince his mother to leave the country house.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/wDyEWK-rG2k" target="_blank" rel="noopener" aria-label="Watch “Burning” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/wDyEWK-rG2k/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/wDyEWK-rG2k/hqdefault.jpg';"
+                alt="Burning" loading="lazy" />
+            </a>
+            <h2 class="project__title">Burning</h2>
+            <p class="project__synopsis">
+              Léo, a shy, withdrawn young student, falls under the spell of a girl he
+              meets at a party.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtube.com/playlist?list=PL-chNuLX_FBxBIx3fLTSZvZhDaR1UYc5u" target="_blank" rel="noopener" aria-label="Watch the “Trash Can!” series on YouTube">
+              <img src="assets/trash-can.jpg" alt="Trash Can! series — Episode 1" loading="lazy" />
+            </a>
+            <h2 class="project__title">Trash Can! (Series)</h2>
+            <p class="project__synopsis">
+              “Trash Can!” is a dramedy telling the story of Elly, a young woman who has
+              just been abandoned by her mother and left with heavy debts. She must find a
+              way to repay them, or risk being evicted from her home. That’s when she comes
+              up with a most unlikely idea: stealing trash cans and reselling them. To pull
+              off her plan, she’ll need the help of Vince, the local delivery guy. An
+              unlikely friendship begins to take shape — and, of course, not everything
+              goes as planned.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/JexrHOvMYx0" target="_blank" rel="noopener" aria-label="Watch “I’m Gonna Kill You” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/JexrHOvMYx0/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/JexrHOvMYx0/hqdefault.jpg';"
+                alt="I’m Gonna Kill You" loading="lazy" />
+            </a>
+            <h2 class="project__title">I’m Gonna Kill You — Inspired by “The Hateful Eight”</h2>
+            <p class="project__synopsis">
+              A parody inspired by “The Hateful Eight.”
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/3W373e4gYbg" target="_blank" rel="noopener" aria-label="Watch “Social Media – TV Report” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/3W373e4gYbg/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/3W373e4gYbg/hqdefault.jpg';"
+                alt="Social Media – TV Report" loading="lazy" />
+            </a>
+            <h2 class="project__title">Social Media – TV Report</h2>
+            <p class="project__synopsis">
+              A TV report on social media and the impact it has on young people’s mental
+              health and bodies.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/-r9cviri3f4" target="_blank" rel="noopener" aria-label="Watch “Halyna’s Story” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/-r9cviri3f4/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/-r9cviri3f4/hqdefault.jpg';"
+                alt="Halyna’s Story" loading="lazy" />
+            </a>
+            <h2 class="project__title">Halyna’s Story</h2>
+            <p class="project__synopsis">
+              Halyna Radchuk is a 19-year-old who grew up in Kyiv, Ukraine. She practiced
+              figure skating at a professional level but had to give it up following an
+              injury. We discover how, with the help of her friends and family, she managed
+              to bounce back. Halyna shares with the audience the hardships she overcame to
+              build a promising future.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/IXd9c2aB3p0" target="_blank" rel="noopener" aria-label="Watch “The Exam” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/IXd9c2aB3p0/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/IXd9c2aB3p0/hqdefault.jpg';"
+                alt="The Exam" loading="lazy" />
+            </a>
+            <h2 class="project__title">The Exam</h2>
+            <p class="project__synopsis">
+              Two high-school students, Charlie and Peggy, have an exam coming up — and will
+              do everything in their power to get hold of the test beforehand.
+            </p>
+          </article>
+
+          <article class="project">
+            <a class="project__thumb" href="https://youtu.be/Y4mC7yHof-0" target="_blank" rel="noopener" aria-label="Watch “The Book of the Year” on YouTube">
+              <img
+                src="https://img.youtube.com/vi/Y4mC7yHof-0/maxresdefault.jpg"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Y4mC7yHof-0/hqdefault.jpg';"
+                alt="The Book of the Year" loading="lazy" />
+            </a>
+            <h2 class="project__title">The Book of the Year</h2>
+            <p class="project__synopsis">
+              A stolen idea — let justice be done.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

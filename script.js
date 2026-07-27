@@ -45,14 +45,18 @@
     }
   }
 
-  // Initial state
-  sync(LARGE_SCREEN);
+  // Only wire up the background video when a video target exists.
+  // Pages without #hero-bg (e.g. the contact page) keep the static image.
+  if (bg) {
+    // Initial state
+    sync(LARGE_SCREEN);
 
-  // React to viewport changes (rotation / resize)
-  if (typeof LARGE_SCREEN.addEventListener === "function") {
-    LARGE_SCREEN.addEventListener("change", sync);
-  } else {
-    LARGE_SCREEN.addListener(sync); // older Safari
+    // React to viewport changes (rotation / resize)
+    if (typeof LARGE_SCREEN.addEventListener === "function") {
+      LARGE_SCREEN.addEventListener("change", sync);
+    } else {
+      LARGE_SCREEN.addListener(sync); // older Safari
+    }
   }
 
   /* Mobile menu: toggle the black dropdown panel. */
@@ -84,6 +88,64 @@
   if (typeof LARGE_SCREEN.addEventListener === "function") {
     LARGE_SCREEN.addEventListener("change", function (mq) {
       if (mq.matches) setMenu(false);
+    });
+  }
+
+  /* ---------- Contact form (contact.html only) ---------- */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var status = form.querySelector(".contact-form__status");
+    var submitBtn = form.querySelector(".contact-form__submit");
+    var keyField = form.querySelector('[name="access_key"]');
+
+    function setStatus(msg, type) {
+      status.textContent = msg;
+      status.className =
+        "contact-form__status" + (type ? " contact-form__status--" + type : "");
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Guard against submitting before the Web3Forms key has been set up.
+      if (!keyField || !keyField.value || keyField.value === "YOUR_ACCESS_KEY_HERE") {
+        setStatus(
+          "This form isn't connected yet — add your Web3Forms access key in contact.html.",
+          "error"
+        );
+        return;
+      }
+
+      var data = {};
+      new FormData(form).forEach(function (value, key) {
+        data[key] = value;
+      });
+
+      setStatus("Sending…", "");
+      submitBtn.disabled = true;
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) {
+          return res.json();
+        })
+        .then(function (json) {
+          if (json.success) {
+            form.reset();
+            setStatus("Thanks — your message has been sent. We'll be in touch.", "ok");
+          } else {
+            setStatus(json.message || "Something went wrong. Please try again.", "error");
+          }
+        })
+        .catch(function () {
+          setStatus("Network error. Please check your connection and try again.", "error");
+        })
+        .then(function () {
+          submitBtn.disabled = false;
+        });
     });
   }
 })();
