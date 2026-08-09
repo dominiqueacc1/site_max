@@ -26,10 +26,15 @@
 
       <!-- Desktop navigation -->
       <nav class="nav" aria-label="Main navigation">
-        <a href="index.html" class="nav__link">Home</a>
-        <a href="projects.html" class="nav__link nav__link--active">Projects</a>
-        <a href="contact.html" class="nav__link">Contact Us</a>
+        <a href="index.html" class="nav__link" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="projects.html" class="nav__link nav__link--active" data-en="Projects" data-fr="Projets">Projects</a>
+        <a href="contact.html" class="nav__link" data-en="Contact Us" data-fr="Contact">Contact Us</a>
+        <!-- Language switch inside the mobile dropdown menu -->
+        <button class="lang-switch lang-switch--menu" type="button" data-lang-switch aria-label="Switch language"></button>
       </nav>
+
+      <!-- Language switch in the top-right corner (desktop) -->
+      <button class="lang-switch lang-switch--top" type="button" data-lang-switch aria-label="Switch language"></button>
 
       <!-- Mobile menu button -->
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
@@ -45,8 +50,10 @@
     <!-- Page content -->
     <div class="hero__content">
       <div class="projects">
-        <h1 class="projects__title">PROJECTS</h1>
-        <p class="projects__intro">A selection of work realised by the agency.</p>
+        <h1 class="projects__title" data-en="PROJECTS" data-fr="PROJETS">PROJECTS</h1>
+        <p class="projects__intro"
+           data-en="A selection of work realised by the agency."
+           data-fr="Une sélection de travaux réalisés par l'agence.">A selection of work realised by the agency.</p>
 
         <div class="projects-grid">
           <!-- Thumbnails use each video's YouTube image, with an automatic
@@ -60,7 +67,9 @@
                 alt="The Country House" loading="lazy" />
             </a>
             <h2 class="project__title">The Country House</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="A Ukrainian family flees the city to take refuge in their country house. Miroslav, a 17-year-old, is tasked with looking after his younger sister Krystyna, who is deaf. As bombs fall nearby and resources run low, Miroslav tries to convince his mother to leave the country house."
+               data-fr="Une famille ukrainienne fuit la ville pour se réfugier dans sa maison de campagne. Miroslav, un jeune homme de 17 ans, est chargé de veiller sur sa petite sœur Krystyna, qui est sourde. Alors que les bombes tombent à proximité et que les ressources s'épuisent, Miroslav essaye de convaincre sa mère de quitter la maison de campagne.">
               A Ukrainian family flees the city to take refuge in their country house.
               Miroslav, a 17-year-old, is tasked with looking after his younger sister
               Krystyna, who is deaf. As bombs fall nearby and resources run low, Miroslav
@@ -76,7 +85,9 @@
                 alt="Burning" loading="lazy" />
             </a>
             <h2 class="project__title">Burning</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="Léo, a shy, withdrawn young student, falls under the spell of a girl he meets at a party."
+               data-fr="Léo, un jeune étudiant renfermé sur lui-même, tombe sous le charme d'une fille qu'il rencontre à cette soirée.">
               Léo, a shy, withdrawn young student, falls under the spell of a girl he
               meets at a party.
             </p>
@@ -87,7 +98,9 @@
               <img src="assets/trash-can.jpg" alt="Trash Can! series — Episode 1" loading="lazy" />
             </a>
             <h2 class="project__title">Trash Can! (Series)</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="“Trash Can!” is a dramedy telling the story of Elly, a young woman who has just been abandoned by her mother and left with heavy debts. She must find a way to repay them, or risk being evicted from her home. That’s when she comes up with a most unlikely idea: stealing trash cans and reselling them. To pull off her plan, she’ll need the help of Vince, the local delivery guy. An unlikely friendship begins to take shape — and, of course, not everything goes as planned."
+               data-fr="« Trash Can ! » est une comédie dramatique qui raconte l'histoire d'Elly, une jeune fille qui vient de se faire abandonner par sa mère avec de nombreuses dettes. Elle va devoir trouver un moyen de les rembourser, sinon elle risque de se faire expulser de sa maison. C'est alors qu'elle a une idée des plus incongrues, celle de voler des poubelles et les revendre. Pour accomplir son plan, elle va avoir besoin de l'aide de Vince, le livreur du coin. C'est là qu'une amitié insolite va se construire, et bien sûr, tout ne va pas se passer comme prévu.">
               “Trash Can!” is a dramedy telling the story of Elly, a young woman who has
               just been abandoned by her mother and left with heavy debts. She must find a
               way to repay them, or risk being evicted from her home. That’s when she comes
@@ -106,7 +119,9 @@
                 alt="I’m Gonna Kill You" loading="lazy" />
             </a>
             <h2 class="project__title">I’m Gonna Kill You — Inspired by “The Hateful Eight”</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="A parody inspired by “The Hateful Eight.”"
+               data-fr="Une parodie inspirée de « The Hateful Eight ».">
               A parody inspired by “The Hateful Eight.”
             </p>
           </article>
@@ -119,7 +134,9 @@
                 alt="Social Media – TV Report" loading="lazy" />
             </a>
             <h2 class="project__title">Social Media – TV Report</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="A TV report on social media and the impact it has on young people’s mental health and bodies."
+               data-fr="Reportage TV sur les réseaux sociaux, l'impact qu'ils ont sur le mental et le corps humain des jeunes.">
               A TV report on social media and the impact it has on young people’s mental
               health and bodies.
             </p>
@@ -133,7 +150,9 @@
                 alt="Halyna’s Story" loading="lazy" />
             </a>
             <h2 class="project__title">Halyna’s Story</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="Halyna Radchuk is a 19-year-old who grew up in Kyiv, Ukraine. She practiced figure skating at a professional level but had to give it up following an injury. We discover how, with the help of her friends and family, she managed to bounce back. Halyna shares with the audience the hardships she overcame to build a promising future."
+               data-fr="Halyna Radchuk est une jeune fille de 19 ans qui a grandi à Kiev, en Ukraine. Elle pratiquait le patinage artistique à un niveau professionnel, mais a dû y renoncer à la suite d'une blessure. Nous allons découvrir comment elle a réussi, avec l'aide de ses amis et de sa famille, à rebondir après sa blessure. Halyna partagera avec le public les difficultés qu'elle a surmontées pour se construire un avenir prometteur.">
               Halyna Radchuk is a 19-year-old who grew up in Kyiv, Ukraine. She practiced
               figure skating at a professional level but had to give it up following an
               injury. We discover how, with the help of her friends and family, she managed
@@ -150,7 +169,9 @@
                 alt="The Exam" loading="lazy" />
             </a>
             <h2 class="project__title">The Exam</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="Two high-school students, Charlie and Peggy, have an exam coming up — and will do everything in their power to get hold of the test beforehand."
+               data-fr="Deux lycéens, Charlie et Peggy, ont un examen mais feront tout en leur pouvoir pour récupérer le test avant.">
               Two high-school students, Charlie and Peggy, have an exam coming up — and will
               do everything in their power to get hold of the test beforehand.
             </p>
@@ -164,7 +185,9 @@
                 alt="The Book of the Year" loading="lazy" />
             </a>
             <h2 class="project__title">The Book of the Year</h2>
-            <p class="project__synopsis">
+            <p class="project__synopsis"
+               data-en="A stolen idea — let justice be done."
+               data-fr="Une idée volée, que justice soit faite.">
               A stolen idea — let justice be done.
             </p>
           </article>

@@ -1,7 +1,10 @@
 /**
- * Load the background video only on large screens.
- * On small screens the CSS background image (assets/image.png) is used,
- * so the heavy video is never downloaded on mobile.
+ * WayPost site scripts:
+ *  - Load the hero background video only on large screens (mobile keeps the
+ *    static CSS background image, so the heavy video is never downloaded).
+ *  - Mobile hamburger menu.
+ *  - EN / FR language switch (persisted in localStorage across pages).
+ *  - Contact form submission via Web3Forms.
  */
 (function () {
   "use strict";
@@ -20,6 +23,15 @@
     video.playsInline = true;
     video.setAttribute("playsinline", ""); // iOS Safari
     video.setAttribute("aria-hidden", "true");
+
+    // Fade the video in only once it's actually rendering frames, so the dark
+    // background shows until then instead of a half-loaded flash.
+    function reveal() {
+      video.classList.add("is-ready");
+    }
+    video.addEventListener("playing", reveal);
+    video.addEventListener("canplay", reveal);
+
     bg.appendChild(video);
     // Some browsers need an explicit play() call after autoplay policies.
     var p = video.play();
@@ -91,6 +103,100 @@
     });
   }
 
+  /* ---------- Language switch (EN / FR) ---------- */
+  var STORAGE_KEY = "waypost-lang";
+
+  // Each flag SVG represents the language you switch TO. No <clipPath> ids are
+  // used, so the markup is safe to inject into several buttons at once.
+  var FLAGS = {
+    fr:
+      '<svg class="lang-switch__flag" viewBox="0 0 3 2" aria-hidden="true">' +
+      '<rect width="3" height="2" fill="#fff"/>' +
+      '<rect width="1" height="2" fill="#0055A4"/>' +
+      '<rect x="2" width="1" height="2" fill="#EF4135"/></svg>',
+    en:
+      '<svg class="lang-switch__flag" viewBox="0 0 60 30" aria-hidden="true">' +
+      '<rect width="60" height="30" fill="#012169"/>' +
+      '<path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>' +
+      '<path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>' +
+      '<rect x="25" width="10" height="30" fill="#fff"/>' +
+      '<rect y="10" width="60" height="10" fill="#fff"/>' +
+      '<rect x="27" width="6" height="30" fill="#C8102E"/>' +
+      '<rect y="12" width="60" height="6" fill="#C8102E"/></svg>'
+  };
+
+  // Bilingual status messages for the contact form.
+  var MSG = {
+    en: {
+      notConnected:
+        "This form isn't connected yet — add your Web3Forms access key in contact.html.",
+      sending: "Sending…",
+      ok: "Thanks — your message has been sent. We'll be in touch.",
+      error: "Something went wrong. Please try again.",
+      network: "Network error. Please check your connection and try again."
+    },
+    fr: {
+      notConnected:
+        "Ce formulaire n'est pas encore connecté — ajoutez votre clé d'accès Web3Forms dans contact.html.",
+      sending: "Envoi…",
+      ok: "Merci — votre message a bien été envoyé. Nous vous recontacterons.",
+      error: "Une erreur s'est produite. Veuillez réessayer.",
+      network: "Erreur réseau. Vérifiez votre connexion et réessayez."
+    }
+  };
+
+  var current = "en";
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "fr" || saved === "en") current = saved;
+  } catch (e) {}
+
+  function applyLang(lang) {
+    current = lang === "fr" ? "fr" : "en";
+    var other = current === "en" ? "fr" : "en";
+    document.documentElement.setAttribute("lang", current);
+
+    // Swap text content (elements carry data-en / data-fr).
+    var textEls = document.querySelectorAll("[data-en]");
+    for (var i = 0; i < textEls.length; i++) {
+      var v = textEls[i].getAttribute("data-" + current);
+      if (v !== null) textEls[i].textContent = v;
+    }
+
+    // Swap placeholders (data-en-placeholder / data-fr-placeholder).
+    var phEls = document.querySelectorAll("[data-en-placeholder]");
+    for (var j = 0; j < phEls.length; j++) {
+      var pv = phEls[j].getAttribute("data-" + current + "-placeholder");
+      if (pv !== null) phEls[j].setAttribute("placeholder", pv);
+    }
+
+    // Update every language button to show the OTHER language's flag.
+    var switches = document.querySelectorAll("[data-lang-switch]");
+    for (var k = 0; k < switches.length; k++) {
+      switches[k].innerHTML =
+        FLAGS[other] +
+        '<span class="lang-switch__code">' + other.toUpperCase() + "</span>";
+      switches[k].setAttribute(
+        "aria-label",
+        current === "en" ? "Passer le site en français" : "Switch the site to English"
+      );
+    }
+
+    try {
+      localStorage.setItem(STORAGE_KEY, current);
+    } catch (e) {}
+  }
+
+  // Any element with [data-lang-switch] toggles the language.
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest("[data-lang-switch]") : null;
+    if (!btn) return;
+    applyLang(current === "en" ? "fr" : "en");
+  });
+
+  // Apply the saved / default language on load.
+  applyLang(current);
+
   /* ---------- Contact form (contact.html only) ---------- */
   var form = document.getElementById("contact-form");
   if (form) {
@@ -109,10 +215,7 @@
 
       // Guard against submitting before the Web3Forms key has been set up.
       if (!keyField || !keyField.value || keyField.value === "YOUR_ACCESS_KEY_HERE") {
-        setStatus(
-          "This form isn't connected yet — add your Web3Forms access key in contact.html.",
-          "error"
-        );
+        setStatus(MSG[current].notConnected, "error");
         return;
       }
 
@@ -121,7 +224,7 @@
         data[key] = value;
       });
 
-      setStatus("Sending…", "");
+      setStatus(MSG[current].sending, "");
       submitBtn.disabled = true;
 
       fetch("https://api.web3forms.com/submit", {
@@ -135,13 +238,13 @@
         .then(function (json) {
           if (json.success) {
             form.reset();
-            setStatus("Thanks — your message has been sent. We'll be in touch.", "ok");
+            setStatus(MSG[current].ok, "ok");
           } else {
-            setStatus(json.message || "Something went wrong. Please try again.", "error");
+            setStatus(MSG[current].error, "error");
           }
         })
         .catch(function () {
-          setStatus("Network error. Please check your connection and try again.", "error");
+          setStatus(MSG[current].network, "error");
         })
         .then(function () {
           submitBtn.disabled = false;
