@@ -511,7 +511,7 @@ body.page-projects .hero__content {
 
   /* Small screens use the still image (no video is downloaded here). */
   .hero__bg {
-    background: url("assets/image.png") center center / cover no-repeat;
+    background: url("assets/image2.png") center center / cover no-repeat;
   }
 
   /* Navigation becomes a black dropdown panel below the header */
