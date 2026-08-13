@@ -19,6 +19,14 @@ body {
   height: 100%;
 }
 
+/* Prevent iOS Safari from auto-scaling the layout on orientation change
+   (the portrait layout would otherwise get zoomed to the landscape width
+   instead of reflowing at the new breakpoint). */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: "Oswald", "Arial Narrow", sans-serif;
   color: var(--white);
