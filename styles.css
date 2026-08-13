@@ -256,15 +256,6 @@ a {
   opacity: 0.8;
 }
 
-/* Small ring shown before "our clips" on mobile only */
-.hero__cta-dot {
-  display: none;
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--white);
-  border-radius: 50%;
-}
-
 /* ---------- Simple background for inner pages ---------- */
 /* Projects & Contact use a plain dark background instead of the hero image. */
 body.page-contact .hero__bg,
@@ -592,10 +583,6 @@ body.page-projects .hero__content {
 
   .hero__cta {
     margin-top: 1.75rem;
-  }
-
-  .hero__cta-dot {
-    display: inline-block;
   }
 
   /* Language switch moves from the top bar into the hamburger menu. */
