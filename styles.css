@@ -506,12 +506,22 @@ body.page-about .hero__content {
   line-height: 1;
 }
 
+/* Slogan: three stacked beats in bold caps, the last one in full white. */
 .about__motto {
-  margin-top: 1.25rem;
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.5rem);
-  letter-spacing: 0.02em;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.about__motto span:last-child {
+  color: var(--white);
 }
 
 .about__text {
