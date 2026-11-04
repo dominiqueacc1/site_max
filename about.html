@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WayPost Studio | About Us</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-about">
+  <section class="hero">
+    <!-- Static background (no video on the about page). -->
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+
+    <!-- Top bar -->
+    <header class="header">
+      <a href="index.html" class="logo" aria-label="WayPost — Home">
+        <img src="assets/logo.png" alt="WayPost" />
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html" class="nav__link" data-en="Home" data-fr="Accueil">Home</a>
+        <a href="projects.html" class="nav__link" data-en="Projects" data-fr="Projets">Projects</a>
+        <a href="about.html" class="nav__link nav__link--active" data-en="About Us" data-fr="À propos">About Us</a>
+        <a href="contact.html" class="nav__link" data-en="Contact Us" data-fr="Contact">Contact Us</a>
+        <!-- Language switch inside the mobile dropdown menu -->
+        <button class="lang-switch lang-switch--menu" type="button" data-lang-switch aria-label="Switch language"></button>
+      </nav>
+
+      <!-- Language switch in the top-right corner (desktop) -->
+      <button class="lang-switch lang-switch--top" type="button" data-lang-switch aria-label="Switch language"></button>
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </header>
+
+    <!-- Page content -->
+    <div class="hero__content">
+      <div class="about">
+        <h1 class="about__title" data-en="ABOUT US" data-fr="À PROPOS DE NOUS">ABOUT US</h1>
+        <p class="about__motto">“The way we go, the way we imagine, the way we create together”</p>
+
+        <div class="about__text">
+          <p data-en="WayPost Studio is a young company that listens to you, bringing the projects you want to create to life and drawing the greatest possible creativity from them. This audiovisual post-production company offers its services across many fields: fiction, documentaries, music videos, commercials, and more."
+             data-fr="WayPost Studio est une jeune entreprise à votre écoute pour donner vie aux projets que vous souhaitez réaliser afin d'en tirer la meilleure créativité possible. Cette société de post-production audiovisuelle offre ses services dans plusieurs domaines : fictions, documentaires, clips musicaux, publicités, etc.">
+            WayPost Studio is a young company that listens to you, bringing the projects
+            you want to create to life and drawing the greatest possible creativity from
+            them. This audiovisual post-production company offers its services across many
+            fields: fiction, documentaries, music videos, commercials, and more.
+          </p>
+          <p data-en="WayPost Studio can also supervise the workflow of your entire post-production, so your projects run as smoothly as possible."
+             data-fr="WayPost Studio offre également la possibilité de superviser le workflow de l'ensemble de la post-production afin de faciliter le bon déroulement de vos projets.">
+            WayPost Studio can also supervise the workflow of your entire post-production,
+            so your projects run as smoothly as possible.
+          </p>
+        </div>
+
+        <h2 class="about__subtitle" data-en="Post-production software" data-fr="Logiciels de post-production">Post-production software</h2>
+
+        <!-- Software logos live in assets/logos/. If a file is missing, its
+             image is hidden and only the name shows. -->
+        <ul class="software">
+          <li class="software__item">
+            <img src="assets/logos/avid-media-composer.png" alt="" onerror="this.style.display='none'" />
+            <span>Avid Media Composer</span>
+          </li>
+          <li class="software__item">
+            <img src="assets/logos/adobe-premiere-pro.png" alt="" onerror="this.style.display='none'" />
+            <span>Adobe Premiere Pro</span>
+          </li>
+          <li class="software__item">
+            <img src="assets/logos/davinci-resolve.png" alt="" onerror="this.style.display='none'" />
+            <span>DaVinci Resolve</span>
+          </li>
+          <li class="software__item">
+            <img src="assets/logos/adobe-after-effects.png" alt="" onerror="this.style.display='none'" />
+            <span>Adobe After Effects</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

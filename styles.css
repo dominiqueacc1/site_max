@@ -267,6 +267,7 @@ a {
 /* ---------- Simple background for inner pages ---------- */
 /* Projects & Contact use a plain dark background instead of the hero image. */
 body.page-contact .hero__bg,
+body.page-about .hero__bg,
 body.page-projects .hero__bg {
   background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
 }
@@ -399,17 +400,20 @@ body.page-contact .hero__content {
 
 /* ---------- Projects page ---------- */
 /* Like the contact page, this one scrolls rather than locking to the viewport. */
-body.page-projects {
+body.page-projects,
+body.page-about {
   overflow-y: auto;
 }
 
-body.page-projects .hero {
+body.page-projects .hero,
+body.page-about .hero {
   height: auto;
   min-height: 100vh;
   min-height: 100dvh;
 }
 
-body.page-projects .hero__content {
+body.page-projects .hero__content,
+body.page-about .hero__content {
   position: relative;
   padding: 9rem 2.5rem 5rem;
   justify-content: flex-start;
@@ -486,6 +490,73 @@ body.page-projects .hero__content {
   font-size: 1.05rem;
   line-height: 1.5;
   color: var(--muted);
+}
+
+/* ---------- About page ---------- */
+.about {
+  width: 100%;
+  max-width: 860px;
+  text-align: center;
+}
+
+.about__title {
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.about__motto {
+  margin-top: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  letter-spacing: 0.02em;
+}
+
+.about__text {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.about__subtitle {
+  margin-top: 3.5rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.software {
+  margin-top: 2rem;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem 1.5rem;
+}
+
+.software__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.software__item img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
 }
 
 /* Accessible off-screen element (honeypot). */
@@ -606,6 +677,7 @@ body.page-projects .hero__content {
 
   /* Inner pages: tighter padding and single-column layout on phones. */
   body.page-projects .hero__content,
+  body.page-about .hero__content,
   body.page-contact .hero__content {
     padding: 6.5rem 1.25rem 3rem;
   }
@@ -617,12 +689,37 @@ body.page-projects .hero__content {
   }
 
   .projects__title,
+  .about__title,
   .contact__title {
     font-size: 2rem;
   }
 
   .project__title {
     font-size: 1.3rem;
+  }
+
+  .about__text {
+    margin-top: 2rem;
+    font-size: 1.05rem;
+    text-align: left;
+  }
+
+  .about__subtitle {
+    margin-top: 2.75rem;
+    font-size: 1.25rem;
+  }
+
+  .software {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .software__item {
+    font-size: 0.95rem;
+  }
+
+  .software__item img {
+    width: 60px;
+    height: 60px;
   }
 
   .contact-form {
